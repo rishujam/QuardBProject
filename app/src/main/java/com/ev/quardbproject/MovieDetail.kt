@@ -37,6 +37,10 @@ class MovieDetail:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getData()
+
+        binding.back.setOnClickListener {
+            (activity as MainActivity).supportFragmentManager.popBackStack()
+        }
     }
 
     override fun onDestroy() {

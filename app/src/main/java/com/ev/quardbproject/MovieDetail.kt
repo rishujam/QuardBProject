@@ -55,8 +55,15 @@ class MovieDetail:Fragment() {
 
     private fun setupData(movie:MovieItem){
         binding.title.text = movie.show.name
-        binding.tvSummary.text = movie.show.summary
-        binding.tvRating.text = movie.show.rating.toString()
+        val summary = movie.show.summary
+        binding.tvSummary.text = summary.substring(3,summary.length-4)
+        val rating = movie.show.rating.toString()
+        binding.tvRating.text = rating.substring(0,6)+" "+rating.substring(rating.length-4,rating.length-1)
+        binding.date.text = movie.show.premiered
+        val gen = movie.show.genres.toString()
+        binding.gen.text = gen.substring(1,gen.length-2)
+        binding.lang.text = movie.show.language
+        binding.timings.text = movie.show.schedule.time+"  "+ movie.show.schedule.days.toString().split("]")[0].substring(1)
         Glide.with(binding.root).load(movie.show.image.original).into(binding.poster)
     }
 }
